@@ -1,0 +1,266 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* NAVBAR */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #111827;
+  color: white;
+  padding: 20px 50px;
+}
+
+.navbar ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+/* HERO */
+/*
+.hero {
+  position: relative;
+
+  min-height: 100vh;
+
+  overflow: hidden;
+
+  background: linear-gradient(
+    135deg,
+    #00c6ff,
+    #0072ff
+  );
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 40px;
+}
+*/
+/*Hero con imagen de fondo*/
+.hero {
+
+  height: 100vh;
+
+  background-image: url('img/fondohero.jpg');
+
+  background-size: cover;
+
+  background-position: center;
+
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+
+  color: white;
+
+  position: relative;
+}
+/* CONTENEDOR */
+
+.hero-container {
+  width: 100%;
+  max-width: 1400px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 50px;
+
+  z-index: 2;
+}
+
+
+/* IMAGEN */
+
+.hero-image img {
+  width: 550px;
+  animation: float 4s ease-in-out infinite;
+}
+
+/* TEXTO */
+
+
+.hero-content {
+  flex: 1;
+  min-width: 300px;
+  max-width: 650px;
+  padding: 40px;
+  border-radius: 30px;
+  color: #FFFFFF; /* Blanco puro para máxima legibilidad */
+  background: linear-gradient(135deg, rgba(26, 61, 76, 0.9), rgba(19, 43, 55, 0.95)); /* Degradado azul petróleo con opacidad */
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(210, 244, 233, 0.15); /* Borde sutil usando el tono menta */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}/* TITULO (Actualizado con Verde Menta) */
+.hero-content h1 {
+  font-size: clamp(40px, 7vw, 75px);
+  color: #D2F4E9; /* Verde menta / cian claro */
+  line-height: 1.1;
+  margin-bottom: 25px;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* TEXTO INFORMATIVO */
+.hero-content p {
+  font-size: clamp(18px, 2vw, 28px);
+  color: #FFFFFF;
+  line-height: 1.6;
+  margin-bottom: 35px;
+  opacity: 0.95;
+}
+/* BOTÓN CALL TO ACTION (Actualizado con Naranja Vibrante) */
+.hero-content button {
+  padding: 16px 35px;
+  border: none;
+  border-radius: 50px; /* Bordes ovalados como el diseño moderno */
+  background: #FF6600; /* Naranja vibrante */
+  color: #FFFFFF;
+  font-size: clamp(16px, 2vw, 22px);
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0px 4px 20px rgba(255, 102, 0, 0.4); /* Resplandor naranja */
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* BLOBS */
+
+.blob {
+  position: absolute;
+
+  border-radius: 50%;
+
+  filter: blur(40px);
+
+  opacity: 0.4;
+}
+
+.blob1 {
+  width: 350px;
+  height: 350px;
+
+  background: #00ffcc;
+
+  top: -100px;
+  right: -100px;
+}
+
+.blob2 {
+  width: 300px;
+  height: 300px;
+
+  background: #7c3aed;
+
+  bottom: -100px;
+  left: -100px;
+}
+
+/* ANIMACIÓN FLOTANTE */
+
+@keyframes float {
+
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-image img {
+    width: 350px;
+  }
+
+  .hero-content h1 {
+    font-size: 50px;
+  }
+
+  .hero-content p {
+    font-size: 20px;
+  }
+}
+
+/* INFO */
+
+.info,
+.services,
+.contact {
+  padding: 80px 50px;
+  text-align: center;
+}
+
+/* CARDS */
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 40px;
+  flex-wrap: wrap; /* Permite que las cartas bajen a la siguiente fila si no hay espacio */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.card {
+  /* flex: grow shrink basis */
+  /* Hace que la carta mida mínimo 250px, pero si hay más espacio se estire para llenar el hueco */
+  flex: 1 1 250px; 
+  
+  /* Evita que la carta se estire infinitamente en pantallas gigantes */
+  max-width: 320px; 
+  
+  padding: 25px;
+  border-radius: 15px;
+  background: #f3f4f6;
+  box-sizing: border-box; /* Asegura que el padding no rompa el ancho de la carta */
+}
+
+/* Ajuste opcional para pantallas muy pequeñas (Celulares) */
+@media (max-width: 480px) {
+  .cards {
+    gap: 15px; /* Reducimos un poco el espacio entre cartas en celulares */
+  }
+  
+  .card {
+    max-width: 100%; /* Permite que ocupen todo el ancho de la pantalla móvil si lo prefieres */
+    flex: 1 1 100%;
+  }
+}
+/* FOOTER */
+
+.footer {
+  background: #111827;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
