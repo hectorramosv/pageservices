@@ -1,4 +1,5 @@
     import { motion } from "framer-motion";
+import imagenPrincipal from '../img/principal.png';
 
 function Hero() {
   return (
@@ -21,10 +22,8 @@ function Hero() {
 
           transition={{ duration: 1 }}
         >
-          <img
-            src="/src/img/principal.png"
-            alt="Tecnología"
-          />
+          <img src={imagenPrincipal} alt="Tecnología" />
+
         </motion.div>
 
         {/* TEXTO */}

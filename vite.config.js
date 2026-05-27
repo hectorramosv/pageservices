@@ -8,4 +8,5 @@ export default defineConfig({
     react(),
     babel({ presets: [reactCompilerPreset()] })
   ],
+  base: 'pageservices', // 👈 AGREGA ESTA LÍNEA EXACTA
 })
