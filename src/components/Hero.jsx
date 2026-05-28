@@ -1,5 +1,5 @@
-    import { motion } from "framer-motion";
-import imagenPrincipal from '../img/principal.png';
+import { motion } from "framer-motion";
+import imagenLaptop from "../img/principal.png"; // <-- AGREGA ESTA LÍNEA EXACTAMENTE AQUÍ
 
 function Hero() {
   return (
@@ -22,8 +22,7 @@ function Hero() {
 
           transition={{ duration: 1 }}
         >
-          <img src={imagenPrincipal} alt="Tecnología" />
-
+           <img src={imagenLaptop} alt="Laptop de tecnología" />
         </motion.div>
 
         {/* TEXTO */}
@@ -37,7 +36,7 @@ function Hero() {
           transition={{ duration: 1 }}
         >
           <h1>
-            Primeros Auxilioszcfdsdffds <br />
+            Primeros Auxilios <br />
             Informáticos
           </h1>
 
