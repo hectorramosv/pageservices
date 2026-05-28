@@ -289,13 +289,20 @@ body {
 }
 
 /* 4. Columna de Textos */
-.vista-emergente-info {
-  flex: 1; /* Absorbe todo el espacio restante a la derecha */
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
 
+/*.vista-emergente-info {
+/*  flex: 1; /* Absorbe todo el espacio restante a la derecha */
+ /* display: flex;
+ /* flex-direction: column;
+  /*gap: 12px;
+/*}*/
+ .vista-emergente-info {
+    width: 100% !important;
+    text-align: center !important;
+    align-items: center !important;
+  }
+
+  
 .vista-emergente-info h2 {
   color: #D2F4E9 !important;
   font-size: clamp(22px, 3vw, 28px) !important;
@@ -307,10 +314,7 @@ body {
   line-height: 1.6 !important;
   color: #e5e7eb !important;
   margin: 0 !important;
-   text-align: justify !important;       /* Fuerza al texto a ocupar todo el ancho de forma recta */
-  text-justify: inter-word !important;  /* Reparte los espacios de manera limpia entre palabras */
-  hyphens: auto;                        /* Añade guiones si una palabra larga debe dividirse */
-
+  
 }
 
 /* 5. Botón de cerrar */
@@ -331,11 +335,15 @@ body {
 }
 
 /* RESPONSIVE: En celulares vuelve a ponerse uno abajo del otro automáticamente */
-@media (max-width: 600px) {
+@media (max-width: 650px) {
+  /* Forzamos al contenedor global a permitir el crecimiento vertical cómodo */
   .vista-emergente-content {
+    padding: 50px 20px 25px !important;
+    gap: 30px !important;
+    max-height: 85dvh !important;
+    overflow-y: auto !important; /* Habilita el desplazamiento interno */
+    display: flex !important;
     flex-direction: column !important;
-    text-align: center !important;
-    padding-top: 50px !important;
   }
   
   .vista-emergente-content img {
@@ -399,4 +407,20 @@ body {
     padding: 12px 24px;
     font-size: 14px;
   }
+   /* El cambio principal: Transforma las filas lado a lado en bloques verticales */
+  .modal-bloque-fila {
+    display: flex !important;
+    flex-direction: column !important; /* Apila imagen y texto en formato de una sola columna */
+    text-align: center !important;
+    gap: 15px !important;
+    width: 100% !important;
+  }
+    .contenedor-reel {
+    width: 100% !important;
+    max-width: 240px !important;
+    height: 160px !important; /* Formato rectangular moderno en móviles */
+    align-self: center !important;
+    flex-shrink: 0 !important;
+  }
+  
 }
