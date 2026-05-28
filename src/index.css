@@ -17,6 +17,38 @@ body {
   font-family: Arial, sans-serif;
 }
 
+
+
+
+@media (max-width: 1050px) {
+ .navbar {
+    padding: 15px 20px;
+    flex-direction: column; /* Pone el logo arriba y la lista abajo de forma ordenada */
+    gap: 15px; /* Separación simétrica */
+  }
+
+
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .hero-image img {
+    max-width: 350px;
+  }
+
+  .hero-content h1 {
+    font-size: 45px;
+  }
+
+  .hero-content p {
+    font-size: 20px;
+  }
+}
+
+
+
 /* NAVBAR */
 .navbar {
   display: flex;
@@ -27,12 +59,57 @@ body {
   padding: 20px 50px;
   width: 100%;
   box-sizing: border-box; /* Previene que el padding de 50px empuje el menú hacia el vacío derecho */
+  position: relative;
+  z-index: 1000; /* Asegura que el menú siempre flote por encima de las imágenes o blobs */
 }
+
 
 .navbar ul {
   display: flex;
   list-style: none;
   gap: 20px;
+}
+
+/* 1. Prepara el enlace para contener la línea (Obligatorio) */
+.navbar ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  position: relative; /* Crucial para que la línea no se mueva de su lugar */
+  padding-bottom: 6px; /* Espacio elegante entre el texto y la línea futura */
+  transition: color 0.3s ease;
+}
+
+/* Color llamativo al pasar el cursor sobre el texto */
+.navbar ul li a:hover {
+  color: #D2F4E9; /* Verde menta brillante de tu paleta */
+}
+
+/* 2. CREACIÓN DE LA RAYA ABAJO CON RELIEVE (Seudoelemento) */
+.navbar ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px; /* Grosor ideal para que tenga presencia */
+  
+  /* COLOR LLAMATIVO CON DEGRADADO (Efecto relieve brillante) */
+  background: linear-gradient(90deg, #FF6600 0%, #ff944d 50%, #FF6600 100%); 
+  
+  /* EFECTO 3D DE RELIEVE: Sombra sutil de luz usando tu naranja corporativo */
+  box-shadow: 0 2px 8px rgba(255, 102, 0, 0.6); 
+  border-radius: 10px; /* Bordes redondeados en la línea */
+  
+  /* ANIMACIÓN: Inicia completamente invisible y encogida en el centro (scaleX 0) */
+  transform: scaleX(0);
+  transform-origin: center; /* Nace desde el centro. Cambia a 'left' si prefieres que barra de izquierda a derecha */
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Transición premium fluida */
+}
+
+/* 3. ACTIVACIÓN AL PASAR EL CURSOR (HOVER) */
+.navbar ul li a:hover::after {
+  transform: scaleX(1); /* La línea se estira horizontalmente al 100% al instante */
 }
 
 /* HERO CON IMAGEN DE FONDO */
@@ -122,6 +199,18 @@ body {
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
 /* BLOBS */
 .blob {
   position: absolute;
@@ -154,29 +243,6 @@ body {
 }
 
 /* RESPONSIVE (Punto de quiebre optimizado a 1050px para evitar colisiones previas) */
-@media (max-width: 1050px) {
-  .navbar {
-    padding: 20px 25px; /* Reducción de padding del menú en pantallas medianas */
-  }
-
-  .hero-container {
-    flex-direction: column;
-    text-align: center;
-    gap: 30px;
-  }
-
-  .hero-image img {
-    max-width: 350px;
-  }
-
-  .hero-content h1 {
-    font-size: 45px;
-  }
-
-  .hero-content p {
-    font-size: 20px;
-  }
-}
 
 /* INFO, SERVICES & CONTACT */
 .info,

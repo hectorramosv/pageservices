@@ -1,7 +1,7 @@
 function Navbar() {
   return (
     <nav className="navbar">
-      <h2>InfoTech</h2>
+      <h2>Techplus Ec.</h2>
 
       <ul>
         <li>Inicio</li>
