@@ -37,7 +37,7 @@ function Hero() {
           transition={{ duration: 1 }}
         >
           <h1>
-            Primeros Auxilios <br />
+            Primeros Auxilioszcfdsdffds <br />
             Informáticos
           </h1>
 

@@ -7,9 +7,8 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div>
-
-      <Navbar />
+    <div className="capa-aislante">
+     <Navbar />
 
       <Hero />
 
@@ -22,6 +21,7 @@ function App() {
       <Footer />
 
     </div>
+   
   );
 }
 
