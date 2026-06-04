@@ -1,88 +1,72 @@
 import { useState } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import Info from "./components/Info";
 import Services from "./components/Services";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
 function App() {
-  // 1. Estado para guardar la información de la tarjeta activa
   const [tarjetaSeleccionada, setTarjetaSeleccionada] = useState(null);
 
   return (
-    <div className="capa-aislante">
-      <Navbar />
-      <Hero />
-      <Info />
+    <div className="app-viewport-container">
+      {/* Navbar Modular Adaptada */}
+      <nav className="navbar">
+        <div className="navbar-logo">Techplus Ec.</div>
+        <ul className="navbar-menu">
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#services">Servicios</a></li>
+          <li><a href="#contact">Contacto</a></li>
+          <li><a href="#contact" className="navbar-cta">Agendar</a></li>
+        </ul>
+      </nav>
 
-      {/* 2. Pasamos la prop setTarjetaSeleccionada a tu componente Services */}
+      {/* Hero Modernizado estilo Dashboard */}
+      <section className="hero">
+        <h1>Primeros Auxilios <br /> Informáticos</h1>
+        <p>
+          Soporte técnico profesional a domicilio y soluciones digitales inmediatas 
+          para computadoras, servidores y redes en Ecuador.
+        </p>
+        <button 
+          className="hero-btn" 
+          onClick={() => document.getElementById('services').scrollIntoView({ behavior: 'smooth' })}
+        >
+          Explorar Servicios
+        </button>
+      </section>
+
+      {/* Sección Grid de Tarjetas */}
       <Services setTarjetaSeleccionada={setTarjetaSeleccionada} />
 
       <Contact />
       <Footer />
 
-      {/* 3. VISTA EMERGENTE GLOBAL */}
+      {/* Modal Integrado con Desenfoque de Esquina */}
       {tarjetaSeleccionada && (
-        <div className="vista-emergente-overlay" onClick={() => setTarjetaSeleccionada(null)}>
-          <div className="vista-emergente-content" onClick={(e) => e.stopPropagation()}>
-            <button className="boton-cerrar" onClick={() => setTarjetaSeleccionada(null)}>×</button>
+        <div className="modal-overlay" onClick={() => setTarjetaSeleccionada(null)}>
+          <div className="modal-content-view" onClick={(e) => e.stopPropagation()}>
+            <button className="close-modal-x" onClick={() => setTarjetaSeleccionada(null)}>×</button>
+            <div style={{ fontSize: "40px", marginBottom: "15px" }}>{tarjetaSeleccionada.icono}</div>
+            <h2 style={{ fontSize: "28px", color: "#a4f4cd", marginBottom: "15px" }}>{tarjetaSeleccionada.titulo}</h2>
+            <p style={{ lineHeight: "1.6", color: "rgba(255,255,255,0.85)" }}>{tarjetaSeleccionada.desc}</p>
             
-            {/* CONTENEDOR VERTICAL GLOBAL DE LAS SECCIONES */}
-            <div className="modal-wrapper-vertical" style={{ display: 'flex', flexDirection: 'column', gap: '30px', width: '100%' }}>
-              
-              {/* === PRIMERA SECCIÓN (IMAGEN IZQ - TEXTO DER) === */}
-              <div className="modal-bloque-fila" style={{ display: 'flex', flexDirection: 'row', alignItems: 'stretch', gap: '35px', width: '100%' }}>
-                
-                {/* LADO IZQUIERDO: Una sola imagen fija (Movido aquí para que sea la primera) */}
-                <div className="contenedor-reel">
-                  <img src={tarjetaSeleccionada.imagen} alt={tarjetaSeleccionada.titulo} />
-                </div>
-
-                {/* LADO DERECHO: Título y texto de la primera sección */}
-                <div className="vista-emergente-info">
-                  <h2>{tarjetaSeleccionada.titulo}</h2>
-                  <p>{tarjetaSeleccionada.textoDetallado}</p>
-                </div>
-
-              </div>
-
-              {/* MUESTRA LA SEGUNDA SECCIÓN EN PANTALLA SOLO SI TIENE UN DUPLICADO ASIGNADO */}
-              {tarjetaSeleccionada.titulo2 && (
-                <>
-                  {/* LÍNEA DIVISORIA ESTÉTICA ENTRE BLOQUES */}
-                  <hr style={{ border: 'none', borderTop: '1px solid rgba(210, 244, 233, 0.15)', margin: '0' }} />
-
-                  {/* === SEGUNDA SECCIÓN (TEXTO IZQ - IMAGEN DER) === */}
-                  <div className="modal-bloque-fila" style={{ display: 'flex', flexDirection: 'row', alignItems: 'stretch', gap: '35px', width: '100%' }}>
-                    
-                    {/* LADO IZQUIERDO: Título y texto de la segunda sección */}
-                    <div className="vista-emergente-info">
-                      <h2>{tarjetaSeleccionada.titulo2}</h2> 
-                      <p>{tarjetaSeleccionada.textoDetallado2}</p> 
-                    </div>
-
-                    {/* LADO DERECHO: Imagen de la segunda sección */}
-                    <div className="contenedor-reel">
-                      <img src={tarjetaSeleccionada.imagenDuplicado} alt={tarjetaSeleccionada.titulo2} /> 
-                    </div>
-
-                  </div>
-                </>
-              )}
-
-              {/* === BOTÓN AL FINAL DE TODO EL CONTENIDO === */}
-              <div style={{ display: 'flex', justifyContent: 'center', width: '100%', marginTop: '10px' }}>
-                <button 
-                  className="btn-modal-contacto"
-                  onClick={() => window.open(`https://wa.me{encodeURIComponent(tarjetaSeleccionada.titulo)}`, '_blank')}
-                >
-                  Solicitar Servicio
-                </button>
-              </div>
-
-            </div> {/* Cierre del modal-wrapper-vertical */}
-            
+            <button 
+              style={{
+                marginTop: "30px",
+                padding: "12px 25px",
+                border: "none",
+                borderRadius: "30px",
+                background: "#1dd1a1",
+                color: "#112036",
+                fontWeight: "bold",
+                cursor: "pointer",
+                width: "100%"
+              }}
+              onClick={() => window.open(`https://wa.me/message/P7ONCPECECOOA1`, '_blank')}
+            >
+              Contactar por WhatsApp
+            </button>
           </div>
         </div>
       )}
